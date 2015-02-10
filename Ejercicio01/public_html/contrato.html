@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Detectives y seguridad</title>
+        <link rel="stylesheet" href="estilos.css" type="text/css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script type="text/javascript">
+            
+            var cuentaAgentes=0;
+            var precioTotal=0;
+            var descuento=0;
+            var precioDescuento=0;
+            var dias=0;
+            
+            function dameDescuentoDias(dias){
+                switch (dias){
+                    case 7: descuento=20;break;
+                    case 30: descuento=30;break;
+                    case 365: descuento=60;break;
+                }
+            }
+            
+            function dameDescuentoAgentes(agentes){
+                switch (agentes){
+                    case 2:descuento=20;break;
+                    case 3:descuento=30;break;
+                }
+                if (agentes>3) {descuento=60;}
+            }
+            
+            function calculaDescuento(){
+                precioTotal=precioTotal-(descuento/100)*precioTotal;
+            }
+            
+            function calcula(){
+                dias=document.getElementById("nDias").valueAsNumber;
+                precioTotal=250*cuentaAgentes*dias;
+                dameDescuentoDias(dias);
+                calculaDescuento();
+                dameDescuentoAgentes(cuentaAgentes);
+                calculaDescuento();
+                                                
+                document.getElementById("total").value=precioTotal+" €";
+            }
+            
+            function drag(ev){
+		ev.dataTransfer.setData("Texto",ev.target.id);
+                
+            }
+                       
+            function drop(ev) {
+                
+                ev.preventDefault();
+		var data=ev.dataTransfer.getData("Texto");
+		ev.target.appendChild(document.getElementById(data));
+                           
+                if (ev.target.id==="menuFotosDestino"){                                    
+                    cuentaAgentes++;                                                    
+                    calcula();
+                }
+                
+                if (ev.target.id==="menuFotosOrigen"){                                    
+                    cuentaAgentes--;                    
+                    calcula();
+                }
+                
+                document.getElementById("nAgentes").value=cuentaAgentes;
+                
+            }
+
+            
+          
+        </script>
+    </head>
+    <body>
+        <header>Detectives y seguridad</header>
+        <nav>         
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="personal.html">Nuestro personal</a></li>
+                <li><a href="tarifas.html">Tarifas</a></li>
+                <li><a href="contrato.html" class="select">Contrátenos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>            
+        </nav>
+        
+        
+        <section>
+            <h1>Contrata desde aquí directamente nuestros servicios</h1>
+            <br><br>
+            <div id="texto">                
+                <p class="naranja">SIEMPRE A SU DISPOSICIÓN, NO FALLAMOS EN NINGUNA OCASIÓN.</p><br>                      
+            <br>
+            </div>
+          
+               <img src="./imagenes/cabecera.jpg" class="imgPeque">                                  
+        </section>
+        <br>
+        <article >
+            <div id="menuFotosOrigen" ondragover="event.preventDefault();" ondrop="drop(event);">
+                <img id="img00" src="./imagenes/anacleto.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img01" src="./imagenes/batman.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img02" src="./imagenes/botones_sacarino.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img03" src="./imagenes/capitan_america.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img04" src="./imagenes/capitan_trueno.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img05" src="./imagenes/carpanta.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img06" src="./imagenes/clouseau.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img07" src="./imagenes/el_zorro.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img08" src="./imagenes/filemon.gif" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img09" src="./imagenes/flash_gordon.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img10" src="./imagenes/goku.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img11" src="./imagenes/green_arrow.png" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img12" src="./imagenes/hulk.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img13" src="./imagenes/ironman.gif" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img14" src="./imagenes/linterna_verde.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img15" src="./imagenes/mortadelo.gif" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img16" src="./imagenes/ofelia.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img17" src="./imagenes/pepe_gotera_otilio.png" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img18" src="./imagenes/robin.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img19" src="./imagenes/rompetechos.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img20" src="./imagenes/spiderman.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img21" src="./imagenes/superlopez.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img22" src="./imagenes/superman.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img23" src="./imagenes/thor.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img24" src="./imagenes/tintin.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                <img id="img25" src="./imagenes/zipi_zape.jpg" class="imgSelector" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()">
+                
+            </div>
+            <br>
+            <p class="naranja">Arrastra tu selección y elige los detalles:</p>
+            <br>
+            <div id="menuFotosDestino" ondragover="event.preventDefault();" ondrop="drop(event);">                
+            </div>
+            <br>
+            
+            <form >
+                  
+                Dias: <input type="number" id="nDias" name="nDias" value="1" onchange="calcula()">
+                <span class="espacio">
+                    Agentes: <input type="text" id="nAgentes" name="nAgentes" value="0" readonly >
+                </span>
+                <span class="espacio">
+                    Presupuesto total: <output id="total" name="total" for="nDias nAgentes">€</output>
+                </span>
+                <br>
+                <br><br>
+                <div id="contieneForm">
+                
+                 <div class="fIzq">
+                        Nombre * <br>
+                        Apellidos * <br>
+                        Correo electronico * <br>
+                        Telefono * <br>
+                        Comentarios * <br>
+                    </div>
+                    <div >
+                        <input type="text" name="nombre"><br>
+                        <input type="text" name="apellidos"><br>
+                        <input type="text" name="email"><br>
+                        <input type="text" name="telefono"><br>
+                        <br>
+                        <textarea rows="6" cols="50" name="comentarios"></textarea>
+                        <div class="botones">
+                            <button type="button">Enviar</button>
+                            <span class="separa"></span>
+                            <button type="button" onclick="location.reload();">Limpiar</button>
+                        </div>
+                    </div>
+                    <br><br>
+                     Los campos con * son obligatorios
+            </form>
+            </div>
+        </article>
+        <footer>
+            <ul>
+                <li>
+                    <h3>Casos de éxito</h3>
+                    <br>
+                    <ul class="listaFoot">
+                        <li>
+                            <a href="#">La Familia Real (de Montroy)</a>
+                        </li>
+                        <li>
+                            <a href="#">Ala Cárcel Bas</a>
+                        </li>
+                        <li>
+                            <a href="#">La empresa Demitio</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                     <h3>En prensa</h3>   
+                     <br>
+                     <ul class="listaFoot">
+                         <li><a href="#">Salvados por la linterna</a></li>
+                         <li><a href="#">Dios mío, por fin me libré de ellos</a></li>
+                         <li><a href="#">Una y no más, Santo Tomás</a></li>
+                     </ul>
+                </li>
+                <li>
+                     <h3>¿Donde estamos?</h3>
+                     <br>
+                     <span class="peque">
+                        Nos encontramos en la Rue del Percebe, 13.<br>
+                        78095 - Villarriba de Los Caminos<br>
+                        ESPAIN
+                     </span>
+                         
+                </li>
+            </ul>
+        </footer>
+    
+        
+     
+    
+    </body>
+   
+    
+    
+</html>
